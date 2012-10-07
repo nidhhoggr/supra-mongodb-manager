@@ -1,5 +1,4 @@
 <h2>Add Supra Mongodb Collection</h2>
-
 <?php echo $this->form->create($model->name); ?>
 <?php echo $this->form->belongs_to_dropdown('SupraMongodbConnection',$sm_connections,array('empty'=>true)); ?>
 <?php echo $this->form->input('name');?>

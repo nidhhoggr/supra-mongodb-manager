@@ -5,7 +5,7 @@ class SupraMongodbCollection extends MvcModel {
 	var $display_field = 'displayable_name';
         var $belongs_to = array(
             'SupraMongodbConnection' => array(
-                'foreign_key' => 'connection_id'
+                'foreign_key' => 'supra_mongodb_connection_id'
             )
         );
         var $has_many = array( 
@@ -15,9 +15,9 @@ class SupraMongodbCollection extends MvcModel {
         );
 
         public function findAllActive() {
-
-            return $this->find(array('active'=>1));
-
+            return $this->find(array(
+                                     'conditions'=>array('SupraMongodbCollection.active'=>1)
+                                    ));
         }
 }
 

@@ -11,4 +11,8 @@ MvcConfiguration::append(array(
     )
 ));
 
-?>
+        wp_enqueue_script(
+                'mongodb-script',
+                mvc_js_url('supra-mongodb-manager','main'),
+                array('jquery')
+        );

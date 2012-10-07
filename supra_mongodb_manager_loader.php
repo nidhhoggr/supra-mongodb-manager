@@ -44,7 +44,7 @@ class SupraMongodbManagerLoader extends MvcPluginLoader {
                 $sql = "
                     CREATE TABLE `$tableName` (
                     `id` int(8) NOT NULL AUTO_INCREMENT,
-                    `connection_id` int(8) NOT NULL,
+                    `supra_mongodb_connection_id` int(8) NOT NULL,
                     `name` varchar(64) NOT NULL,
                     `displayable_name` varchar(64) NOT NULL,
                     `active` boolean NOT NULL DEFAULT 1,
@@ -56,7 +56,7 @@ class SupraMongodbManagerLoader extends MvcPluginLoader {
                 $sql = "
                      CREATE TABLE `$tableName` (
                      `id` int(8) NOT NULL AUTO_INCREMENT,
-                     `collection_id` int(8) NOT NULL,
+                     `supra_mongodb_collection_id` int(8) NOT NULL,
                      `name` varchar(64) NOT NULL,
                      `displayable_name` varchar(64) NOT NULL,
                      `active` boolean NOT NULL DEFAULT 1,

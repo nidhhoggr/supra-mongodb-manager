@@ -18,7 +18,7 @@ class AdminSupraMongodbCollectionsController extends MvcAdminController {
 
         private function _set_connections() {
             $this->load_model('SupraMongodbConnection');
-            $sm_connections = $this->SupraMongodbConnection->find(array('selects' => array('id', 'displayable_name')));
+            $sm_connections = $this->SupraMongodbConnection->find(array('selects' => array('id', 'name')));
             $this->set('sm_connections', $sm_connections);
         }
 }
