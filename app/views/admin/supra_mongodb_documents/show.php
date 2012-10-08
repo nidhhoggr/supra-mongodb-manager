@@ -1,4 +1,7 @@
-<h2><?=$collection->displayable_name?></h2>
+<h2>
+<?=$collection->displayable_name?>
+&nbsp;-&nbsp;<a class="document_creation_link">Add New</a>
+</h2>
 <table class="widefat post fixed">
   <thead>
     <tr>
@@ -19,8 +22,7 @@ foreach($documents as $document) {
     foreach($fields as $field) {
         echo '<td>'.$document[$field->name].'</td>';
     }
-    echo '<td><a class="document_modification_link" data-object-id="'.$document['_id'].'">edit</a></td>';
-    echo '<td><a class="document_creation_link" data-object-id="'.$document['_id'].'">add</a></td>';
+    echo '<td><a class="document_modification_link" data-object-id="'.$document['_id'].'">edit</a> <a class="document_deletion_link" data-object-id="'.$document['_id'].'">delete</a></td>';
     echo '</tr>';
 }
 ?>

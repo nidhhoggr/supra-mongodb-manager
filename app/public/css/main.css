@@ -1,0 +1,29 @@
+.mongodb_nav ul li {
+    display: inline;
+    border: 1px solid #333;
+    background: #EEE;
+    padding: 10px;
+}
+
+.mongodb_nav a {
+    font: 15px bold arial,sans-serif;
+}
+
+.mongodb_wrapper .collection_row {
+    padding: 10px;    
+    border: 1px solid #333;
+}
+
+.mongodb_wrapper .collection_row:nth-of-type(odd) {
+    background-color: #FEE;
+}
+
+.current_document {
+    background: url('images/go-back-icon.png') top left no-repeat;
+    height: 30px;
+    padding: 10px 0 0 25px;
+}
+
+.current_document a {
+    font: 15px bold arial,sans-serif;
+}

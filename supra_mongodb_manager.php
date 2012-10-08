@@ -2,11 +2,13 @@
 /*
 Plugin Name: Supra Mongodb Manager
 Plugin URI: 
-Description: 
-Author: 
-Version: 
-Author URI: 
+Description: A plugin to provide a crud interface for the specified mongodb collection
+Author: zmijevik
+Version: 0.1 
 */
+
+//load the framework
+require_once(dirname(__FILE__) . '/wp_mvc.php');
 
 register_activation_hook(__FILE__, 'supra_mongodb_manager_activate');
 register_deactivation_hook(__FILE__, 'supra_mongodb_manager_deactivate');

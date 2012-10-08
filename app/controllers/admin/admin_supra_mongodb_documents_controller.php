@@ -117,16 +117,13 @@ class AdminSupraMongodbDocumentsController extends MvcAdminController {
 
             if($result) {
                 $this->flash('notice','successfully created document.');
-                $document = $db->{$collection->name}->findOne(array('_id'=> new MongoId($insert_fields['_id'])));
-                var_dump($insert_fields);
-                var_dump($document);
+                $mongo_id = $insert_fields['_id'];
+                echo json_encode(array('_id'=>$mongo_id->__toString()));
+                die(); 
             }
             else {
                 $this->flash('notice','something went wrong.');
             }
-
-
-            $this->refresh();
         }
 
         $this->set('collection', $collection);
@@ -135,6 +132,23 @@ class AdminSupraMongodbDocumentsController extends MvcAdminController {
 
     public function delete() {
 
+        if(!empty($this->params['_id'])) {
+
+            $db = $this->getMongoConnection();
+
+            extract($this->_getActiveCollectionsAndFieldsByCollectionId($this->params['collection_id']));
+
+            $result = $db->{$collection->name}->remove(
+                          array('_id'=> new MongoId($this->params['_id']))
+                      );
+
+            if($result) {
+                $this->flash('notice','successfully deleted document.');
+            }
+            else {
+                $this->flash('notice','something went wrong.');
+            }
+        }
     }
 
     public function _getActiveCollections() {
