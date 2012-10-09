@@ -1,7 +1,6 @@
 <?php
 /*
 Plugin Name: Supra Mongodb Manager
-Plugin URI: 
 Description: A plugin to provide a crud interface for the specified mongodb collection
 Author: zmijevik
 Version: 0.1 
