@@ -36,6 +36,7 @@ class SupraMongodbManagerLoader extends MvcPluginLoader {
                      `host` varchar(64) NOT NULL,
                      `port` varchar(64) NOT NULL,
                      `database_name` varchar(64) NOT NULL,
+                     `active` boolean NOT NULL DEFAULT 1,
                      PRIMARY KEY (`id`)
                  )";
                 dbDelta($sql);

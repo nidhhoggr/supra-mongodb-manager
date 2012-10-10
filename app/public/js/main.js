@@ -1,31 +1,14 @@
 var collection_id; 
 var go_back, add_document;
 
-wrapResponse = function(data) {
-    $.post(ajaxurl, data, function(response){
-        $('.mongodb_wrapper').replaceWith(response);
-        processNavigator();
-    });
-}
-
-processNavigator = function() {
-        if(go_back) {
-            $('.current_document').show();
-            $('.current_document').html(go_back);
-        }
-        else {
-            $('.current_document').hide();
-        }
-}
-
-$(function() {
+jQuery(function(jQuery) {
  
     go_back = null;
     processNavigator();
 
-    $('.collection_interface_link').live('click',function() {
+    jQuery('.collection_interface_link').live('click',function() {
 
-        collection_id = $(this).data('collection-id');
+        collection_id = jQuery(this).data('collection-id');
 
         var data = {
            action: 'admin_supra_mongodb_documents_show',
@@ -36,7 +19,7 @@ $(function() {
         wrapResponse(data);
     });
 
-    $('.connections_interface_link').live('click',function() {
+    jQuery('.connections_interface_link').live('click',function() {
 
         var data = {
            action: 'admin_supra_mongodb_connections_index',
@@ -46,7 +29,7 @@ $(function() {
         wrapResponse(data);
     });
 
-    $('.collections_interface_link').live('click',function() {
+    jQuery('.collections_interface_link').live('click',function() {
 
         var data = {
            action: 'admin_supra_mongodb_collections_index',
@@ -56,7 +39,7 @@ $(function() {
         wrapResponse(data);
     });
 
-    $('.fields_interface_link').live('click',function() {
+    jQuery('.fields_interface_link').live('click',function() {
 
         var data = {
            action: 'admin_supra_mongodb_fields_index',
@@ -66,7 +49,7 @@ $(function() {
         wrapResponse(data);
     });
 
-    $('.documents_interface_link').live('click',function() {
+    jQuery('.documents_interface_link').live('click',function() {
 
         var data = {
            action: 'admin_supra_mongodb_documents_index',
@@ -80,16 +63,16 @@ $(function() {
 
 
 
-    $('.document_modification_link').live('click', function() {
-        modify_document($(this).data('object-id'));
+    jQuery('.document_modification_link').live('click', function() {
+        modify_document(jQuery(this).data('object-id'));
     });
 
-    $('.document_deletion_link').live('click', function() {
+    jQuery('.document_deletion_link').live('click', function() {
         if (!confirmDelete()) return false;
-        delete_document($(this).data('object-id'));
+        delete_document(jQuery(this).data('object-id'));
     });
 
-    $('.document_creation_link').live('click', function() {
+    jQuery('.document_creation_link').live('click', function() {
 
         var data = {
            action: 'admin_supra_mongodb_documents_add',
@@ -99,44 +82,63 @@ $(function() {
         wrapResponse(data);
     });
 
-    $('.mongodb_document_modifier').live('submit', function(e) {
+    jQuery('.mongodb_document_modifier').live('submit', function(e) {
         e.preventDefault();
 
         var data = {
            action: 'admin_supra_mongodb_documents_edit',
-           _id: $(this).data('object-id'),
+           _id: jQuery(this).data('object-id'),
            collection_id: collection_id,
-           formdata: $(this).serialize()
+           formdata: jQuery(this).serialize()
         }
 
         wrapResponse(data);
     });
 
-    $('.mongodb_document_creator').live('submit', function(e) {
+    jQuery('.mongodb_document_creator').live('submit', function(e) {
         e.preventDefault();
 
         var data = {
            action: 'admin_supra_mongodb_documents_add',
            collection_id: collection_id,
-           formdata: $(this).serialize()
+           formdata: jQuery(this).serialize()
         }
 
         // ajaxurl is defined by WordPress
-        $.post(ajaxurl, data, function(response){
+        jQuery.post(ajaxurl, data, function(response){
 
-            var json_resp = $.parseJSON(response);
+            var json_resp = jQuery.parseJSON(response);
 
             if(json_resp._id) {
                 modify_document_link(json_resp._id);
             }
             else {
-                $('.mongodb_wrapper').replaceWith(response);
-                $('.current_document').html(go_back);
+                jQuery('.mongodb_wrapper').replaceWith(response);
+                jQuery('.current_document').html(go_back);
             }
 
         });
     });
+
 });
+
+wrapResponse = function(data) {
+    jQuery.post(ajaxurl, data, function(response){
+        jQuery('.mongodb_wrapper').replaceWith(response);
+        processNavigator();
+    });
+}
+
+processNavigator = function() {
+        if(go_back) {
+            jQuery('.current_document').show();
+            jQuery('.current_document').html(go_back);
+        }
+        else {
+            jQuery('.current_document').hide();
+        }
+}
+
 
 delete_document = function(object_id) {
 

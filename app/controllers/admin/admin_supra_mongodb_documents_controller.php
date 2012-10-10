@@ -48,8 +48,23 @@ class AdminSupraMongodbDocumentsController extends MvcAdminController {
 
         $server_url .= '/' . $connection->database_name;
 
-        $m = new Mongo($server_url);
+        try { 
 
+            $m = new Mongo($server_url);
+
+        } 
+        catch(Exception $e) {
+
+            if($connection) {
+                echo '<div id="message" class="notice error"><p>There was an error connecting to the active connection: '.$connection->name.'</p></span>';
+            }
+            else {
+                echo '<div id="message" class="notice error"><p>There was no specified active connection</p></span>';
+            }
+
+            exit();
+        }
+ 
         return $m->{$connection->database_name};
     }
 
@@ -156,9 +171,4 @@ class AdminSupraMongodbDocumentsController extends MvcAdminController {
         $this->set('collections',$this->SupraMongodbCollection->findAllActive());
     }
  
-    public function _getActiveFieldsByCollectionId($collection_id) {
-
-    }
 }
-
-?>
