@@ -28,7 +28,7 @@ class SupraMongodbManagerLoader extends MvcPluginLoader {
 		// dbDelta($sql);
                 $tableName = $this->prefixTableName('supra_mongodb_connections');
                 $sql = "
-                     CREATE TABLE `$tableName` (
+                     CREATE TABLE IF NOT EXISTS `$tableName` (
                      `id` int(8) NOT NULL AUTO_INCREMENT,
                      `name` varchar(64) NOT NULL,
                      `username` varchar(64) NOT NULL,
@@ -43,7 +43,7 @@ class SupraMongodbManagerLoader extends MvcPluginLoader {
 
                 $tableName = $this->prefixTableName('supra_mongodb_collections');
                 $sql = "
-                    CREATE TABLE `$tableName` (
+                    CREATE TABLE IF NOT EXISTS `$tableName` (
                     `id` int(8) NOT NULL AUTO_INCREMENT,
                     `supra_mongodb_connection_id` int(8) NOT NULL,
                     `name` varchar(64) NOT NULL,
@@ -55,7 +55,7 @@ class SupraMongodbManagerLoader extends MvcPluginLoader {
 
                 $tableName = $this->prefixTableName('supra_mongodb_fields');
                 $sql = "
-                     CREATE TABLE `$tableName` (
+                     CREATE TABLE IF NOT EXISTS `$tableName` (
                      `id` int(8) NOT NULL AUTO_INCREMENT,
                      `supra_mongodb_collection_id` int(8) NOT NULL,
                      `name` varchar(64) NOT NULL,

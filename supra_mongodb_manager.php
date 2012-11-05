@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Supra Mongodb Manager
+Plugin Name: Supra MongoDB Manager
 Description: A plugin to provide a crud interface for the specified mongodb collection
 Author: zmijevik
-Version: 0.1 
+Version: 0.6
 */
 
 //load the framework
