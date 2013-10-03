@@ -110,7 +110,7 @@ jQuery(function(jQuery) {
             var json_resp = jQuery.parseJSON(response);
 
             if(json_resp._id) {
-                modify_document_link(json_resp._id);
+                modify_document(json_resp._id);
             }
             else {
                 jQuery('.mongodb_wrapper').replaceWith(response);
